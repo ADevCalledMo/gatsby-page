@@ -1,4 +1,12 @@
-import * as React from "react"
+import React from "react"
 
+const IndexPage = () => {
+   return (
+     <div>
+       <h1>Hello!</h1>
+       <h2>I'm Mozes, I am a web developer from rainy Nottingham! </h2>
+     </div>
+   )
+}
 
-export default () => <div>The Great Gatsby Bootcamp!</div>
+export default IndexPage
