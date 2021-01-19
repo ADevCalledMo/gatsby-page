@@ -19,8 +19,6 @@ const BlogPage = () => {
         }
     `)
 
-    console.log(data, "<---- DATA IS HERE")
-
   return (
     <Layout>
       <h1>Blog Posts</h1>
