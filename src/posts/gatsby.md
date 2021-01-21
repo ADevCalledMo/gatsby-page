@@ -5,6 +5,8 @@ date: "17-01-2021"
 
 I just launched a new Blog! 
 
+![Grass](./grass.jpg)
+
 ## Technologies Used
 
 1. Gatsby

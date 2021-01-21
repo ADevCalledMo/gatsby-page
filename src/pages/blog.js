@@ -3,19 +3,17 @@ import { Link, graphql, useStaticQuery } from "gatsby";
 
 import Layout from "../components/layout";
 
+import blogStyles from "./blog.module.scss";
+
 const BlogPage = () => {
   const data = useStaticQuery(graphql`
     query {
-      allMarkdownRemark {
+      allContentfulBlogPost(sort: { fields: date, order: DESC }) {
         edges {
           node {
-            frontmatter {
-              title
-              date
-            }
-            fields {
-              slug
-            }
+            title
+            slug
+            date(formatString: "Do MMMM YYYY")
           }
         }
       }
@@ -25,13 +23,13 @@ const BlogPage = () => {
   return (
     <Layout>
       <h1>Blog Posts</h1>
-      <ol>
-        {data.allMarkdownRemark.edges.map(edges => {
+      <ol className={blogStyles.posts}>
+        {data.allContentfulBlogPost.edges.map(edges => {
           return (
-            <li>
-              <Link to={`/blog/${edges.node.fields.slug}`}>
-                <h2>{edges.node.frontmatter.title}</h2>
-                <p>{edges.node.frontmatter.date}</p>
+            <li className={blogStyles.post}>
+              <Link to={`/blog/${edges.node.slug}`}>
+                <h2>{edges.node.title}</h2>
+                <p>{edges.node.date}</p>
               </Link>
             </li>
           );
