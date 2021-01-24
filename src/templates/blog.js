@@ -2,18 +2,12 @@ import React from "react";
 import { graphql } from "gatsby";
 import { renderRichText } from "gatsby-source-contentful/rich-text";
 import { BLOCKS } from "@contentful/rich-text-types";
-// import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
+
+
 
 import Layout from "../components/layout";
-// query($slug: String!) {
-//   contentfulBlogPost(slug: { eq: $slug }) {
-//     title
-//     date(formatString: "Do MMMM YYYY")
-//     body {
-//       raw
-//     }
-//   }
-// }
+import Head from "../components/head"
+
 
 export const query = graphql`
   query($slug: String!) {
@@ -53,6 +47,7 @@ const Blog = props => {
 
   return (
     <Layout>
+    <Head title={props.data.contentfulBlogPost.title} />
       <h1>{props.data.contentfulBlogPost.title}</h1>
       <p>{props.data.contentfulBlogPost.date}</p>
       {renderRichText(props.data.contentfulBlogPost.body, options)}
